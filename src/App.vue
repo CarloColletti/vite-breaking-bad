@@ -2,7 +2,6 @@
 import { store } from "./data/store";
 import axios from "axios";
 import AppMain from "./components/AppMain.vue";
-
 export default {
   components: { AppMain },
   data() {
@@ -12,14 +11,14 @@ export default {
   },
   methods: {
     fetchCards() {
-      axios
-        .get(store.url)
-        .then((response) => {
-          store.yugiCards = response.data.data;
-        })
-      },
+      axios.get(store.url).then((response) => {
+        store.yugiCards = response.data.data;
+      });
+    },
   },
-  
+  created() {
+    this.fetchCards();
+  },
 };
 </script>
 
